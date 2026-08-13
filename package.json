@@ -1,0 +1,14 @@
+{
+  "name": "airbeat-pro-music",
+  "version": "3.0.0",
+  "description": "Zero-Error Music Player API & Web App by @lakshitpatidar",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
+
