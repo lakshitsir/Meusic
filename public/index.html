@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="hi" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>AirBeat Pro — Premium Music Experience</title>
+  <title>AirBeat Pro — Instant Music Streaming</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -11,8 +11,8 @@
 
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #060911; color: #f3f4f6; user-select: none; }
-    .glass-box { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
-    .glass-player { background: rgba(10, 14, 26, 0.92); backdrop-filter: blur(24px); border-top: 1px solid rgba(255, 255, 255, 0.1); }
+    .glass-box { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .glass-player { background: rgba(10, 14, 26, 0.95); backdrop-filter: blur(24px); border-top: 1px solid rgba(255, 255, 255, 0.1); }
     input[type="range"] { -webkit-appearance: none; appearance: none; background: rgba(255,255,255,0.15); border-radius: 999px; height: 4px; outline: none; }
     input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 12px; height: 12px; border-radius: 50%; background: #3b82f6; cursor: pointer; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -22,7 +22,7 @@
 
 <body class="h-screen w-screen flex flex-col overflow-hidden">
 
-  <!-- TOP HEADER -->
+  <!-- HEADER -->
   <header class="glass-box sticky top-0 z-30 px-4 py-3 flex items-center justify-between shadow-lg">
     <div class="flex items-center gap-3">
       <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
@@ -30,17 +30,18 @@
       </div>
       <div>
         <h1 class="font-bold text-base tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">AirBeat Pro</h1>
-        <p class="text-[10px] text-blue-400 font-semibold">Zero-Error Engine</p>
+        <p class="text-[10px] text-blue-400 font-semibold">Instant Stream Engine</p>
       </div>
     </div>
 
     <!-- SEARCH BAR -->
-    <div class="relative w-1/2 max-w-md">
-      <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
-      <input type="text" id="searchInput" placeholder="Search songs, artists, remixes..." class="w-full bg-gray-900/90 border border-gray-700/60 rounded-full py-1.5 pl-9 pr-4 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-all shadow-inner" onkeydown="if(event.key === 'Enter') runSearch()" />
+    <div class="relative w-1/2 max-w-md flex items-center">
+      <i class="fa-solid fa-magnifying-glass absolute left-3.5 text-gray-400 text-xs"></i>
+      <input type="text" id="searchInput" placeholder="Search any song, artist, album..." class="w-full bg-gray-900/90 border border-gray-700/60 rounded-full py-1.5 pl-9 pr-8 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-all shadow-inner" onkeydown="if(event.key === 'Enter') runSearch()" />
+      <button onclick="runSearch()" class="absolute right-2.5 text-blue-400 hover:text-white text-xs p-1"><i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
-    <!-- HEADER CONTROLS -->
+    <!-- MODAL TOGGLES -->
     <div class="flex items-center gap-2">
       <button onclick="toggleEQModal()" title="Equalizer" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-gray-300 hover:text-white transition-all">
         <i class="fa-solid fa-sliders text-xs"></i>
@@ -51,10 +52,10 @@
     </div>
   </header>
 
-  <!-- MAIN BODY CONTAINER -->
+  <!-- MAIN VIEWPORT -->
   <div class="flex-1 flex overflow-hidden">
     
-    <!-- NAVIGATION SIDEBAR -->
+    <!-- SIDEBAR -->
     <aside class="hidden md:flex flex-col w-56 glass-box p-4 gap-2 border-r border-white/5">
       <button onclick="switchTab('explore')" id="tab-explore" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold bg-blue-600 text-white shadow-md shadow-blue-600/20">
         <i class="fa-solid fa-compass"></i> Explore
@@ -67,20 +68,20 @@
       </button>
     </aside>
 
-    <!-- CONTENT VIEWPORT -->
+    <!-- CONTENT -->
     <main class="flex-1 overflow-y-auto no-scrollbar p-4 md:p-6 pb-32">
       
-      <!-- HERO BANNER -->
+      <!-- HERO -->
       <div class="relative rounded-2xl overflow-hidden p-6 mb-6 bg-gradient-to-r from-blue-950/70 via-indigo-950/50 to-slate-900 border border-blue-500/20">
         <div class="relative z-10">
-          <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/20 text-blue-300 mb-2 border border-blue-500/30 uppercase tracking-widest">Studio Sound • 320kbps</span>
-          <h2 class="text-xl md:text-2xl font-bold">Fast & Uninterrupted Music</h2>
-          <p class="text-xs text-gray-300 mt-1">Multi-node backend proxy architecture to prevent IP blocks and lag.</p>
+          <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/20 text-blue-300 mb-2 border border-blue-500/30 uppercase tracking-widest">Multi-Mirror Engine • 320kbps</span>
+          <h2 class="text-xl md:text-2xl font-bold">Search & Play Anything</h2>
+          <p class="text-xs text-gray-300 mt-1">Automatic mirror switching guarantees no downtime and zero search errors.</p>
         </div>
       </div>
 
       <div class="flex items-center justify-between mb-4">
-        <h3 id="sectionTitle" class="text-xs font-bold uppercase tracking-wider text-gray-400">Trending Tracks</h3>
+        <h3 id="sectionTitle" class="text-xs font-bold uppercase tracking-wider text-gray-400">Trending Music</h3>
       </div>
 
       <!-- SONG GRID -->
@@ -103,7 +104,7 @@
   <div id="eqModal" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
     <div class="glass-box p-6 rounded-2xl w-full max-w-md border border-white/10 shadow-2xl">
       <div class="flex items-center justify-between mb-6">
-        <h3 class="text-sm font-bold text-white flex items-center gap-2"><i class="fa-solid fa-sliders text-blue-400"></i> Hardware Equalizer</h3>
+        <h3 class="text-sm font-bold text-white flex items-center gap-2"><i class="fa-solid fa-sliders text-blue-400"></i> Equalizer</h3>
         <button onclick="toggleEQModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
       </div>
       
@@ -138,18 +139,16 @@
     </div>
   </div>
 
-  <!-- DEVELOPER MODAL -->
+  <!-- DEV MODAL -->
   <div id="devModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
     <div class="glass-box p-6 rounded-2xl w-full max-w-sm text-center border border-blue-500/30 shadow-2xl relative">
       <button onclick="toggleDevModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
       <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 p-1 mb-3 shadow-lg shadow-blue-500/40">
-        <div class="w-full h-full bg-gray-900 rounded-full flex items-center justify-center text-2xl text-blue-400 font-bold">
-          LP
-        </div>
+        <div class="w-full h-full bg-gray-900 rounded-full flex items-center justify-center text-2xl text-blue-400 font-bold">LP</div>
       </div>
       <h3 class="text-base font-bold text-white">Lakshit Patidar</h3>
       <p class="text-xs text-blue-400 font-semibold mb-2">@lakshitpatidar</p>
-      <p class="text-xs text-gray-300 leading-relaxed mb-4">Founder & Lead Developer. Engineered for high performance, zero downtime, and lag-free music streaming.</p>
+      <p class="text-xs text-gray-300 leading-relaxed mb-4">Lead Architect. Built with multi-mirror routing for zero lag, studio quality sound, and high reliability.</p>
       <div class="flex items-center justify-center gap-3">
         <a href="https://telegram.me/pxllakshit" target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-xs font-semibold text-white rounded-xl shadow-md transition-all flex items-center gap-2">
           <i class="fa-brands fa-telegram"></i> Telegram
@@ -158,7 +157,7 @@
     </div>
   </div>
 
-  <!-- BOTTOM PLAYER FOOTER -->
+  <!-- PLAYER FOOTER -->
   <footer class="glass-player fixed bottom-0 left-0 right-0 z-40 px-4 py-3">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2 md:gap-4">
       
@@ -206,7 +205,6 @@
     let currentIndex = -1;
     let audioCtx, source, filters = [];
 
-    // Isolated Local Storage Manager per user
     const Store = {
       getFavs: () => JSON.parse(localStorage.getItem('ab_favs') || '[]'),
       toggleFav: (song) => {
@@ -219,7 +217,7 @@
     };
 
     window.addEventListener('DOMContentLoaded', () => {
-      runSearch('Arijit Singh');
+      runSearch('Maan Meri Jaan');
       initAudioEngine();
     });
 
@@ -235,8 +233,8 @@
         const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
         const data = await res.json();
 
-        if (!data.success || !data.results.length) {
-          grid.innerHTML = `<p class="col-span-full text-center text-xs text-gray-500 py-10">No tracks found.</p>`;
+        if (!data.success || !data.results || !data.results.length) {
+          grid.innerHTML = `<p class="col-span-full text-center text-xs text-gray-400 py-10">No songs found. Try another song name.</p>`;
           return;
         }
 
@@ -244,7 +242,7 @@
         renderGrid(playlist);
         renderQueue();
       } catch (e) {
-        grid.innerHTML = `<p class="col-span-full text-center text-xs text-red-400 py-10">Connection error. Retry again.</p>`;
+        grid.innerHTML = `<p class="col-span-full text-center text-xs text-red-400 py-10">Network timeout. Please tap search again.</p>`;
       }
     }
 
@@ -276,8 +274,7 @@
 
       let streamUrl = song.streamUrl;
 
-      // If YouTube song without direct stream URL, fetch on demand
-      if (!streamUrl) {
+      if (!streamUrl && song.source === 'yt') {
         try {
           const res = await fetch(`/api/stream?id=${song.id}`);
           const data = await res.json();
@@ -327,7 +324,6 @@
     function adjustVol(v) { audio.volume = v / 100; }
     function fmt(s) { const m = Math.floor(s / 60), sec = Math.floor(s % 60); return `${m}:${sec < 10 ? '0' : ''}${sec}`; }
 
-    // Equalizer Web Audio Engine
     function initAudioEngine() {
       try {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -375,5 +371,4 @@
           <img src="${s.cover}" class="w-8 h-8 rounded object-cover" />
           <div class="overflow-hidden flex-1">
             <p class="text-xs font-semibold truncate">${s.title}</p>
-            <p class="text-[9px] text-gray-500 truncate">${s.artist}</p>
- 
+            <p class="text-[9px] text-gray-500 truncate">${s.artis
